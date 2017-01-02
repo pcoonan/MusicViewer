@@ -1,0 +1,33 @@
+﻿@using MusicViewer.Models
+@model MusicViewer.Models.SongViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Year</th>
+            <th>Track</th>
+        </tr>
+            
+        
+    </thead>
+    <tbody>
+        @foreach(Song s in Model.Songs)
+        {
+            <tr>
+                <td>@Html.ActionLink(s.Title, "Get", new { id = s.Id })</td>
+                <td>@s.Artist.Name</td>
+                <td>@s.Album.Name</td>
+                <td>@s.Album.Year</td>
+                <td>@s.Track</td>
+            </tr>
+        }
+    </tbody>
+</table>

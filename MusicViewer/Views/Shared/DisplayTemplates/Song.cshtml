@@ -1,0 +1,36 @@
+﻿@model MusicViewer.Models.Song
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="col-xs-6">
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Title, new { @class = "form-label col-xs-4" })
+                <div class="col-xs-6">
+                    @Html.DisplayFor(m => m.Title, new { @class = "form-control" })
+                </div>
+            </div> 
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Artist.Name, new { @class = "form-label col-xs-4" })
+                <div class="col-xs-6">
+                    @Html.DisplayFor(m => m.Artist.Name, new { @class = "form-control" })
+                </div>
+            </div> 
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Album.Name, new { @class = "form-label col-xs-4" })
+                <div class="col-xs-6">
+                    @Html.ActionLink(Model.Album.Name, "Get", "Album", new { id = Model.Album.Id }, new { @class = "form-control"})
+                    @*@Html.DisplayFor(m => m.Album.Name, new { @class = "form-control" })*@
+                </div>
+            </div> 
+            <div class="form-group row">
+                @Html.LabelFor(m => m.Album.Year, new { @class = "form-label col-xs-4" })
+                <div class="col-xs-6">
+                    @Html.DisplayFor(m => m.Album.Year, new { @class = "form-control" })
+                </div>
+            </div> 
+        </div>
+        <div class="col-xs-6">
+            <img src="~/Images/default_album.png" class="img-thumbnail"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@using MusicViewer.Models
+@model MusicViewer.Models.AlbumViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Albums</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Album</th>
+            <th>Artist</th>
+        </tr>
+
+
+    </thead>
+    <tbody>
+        @foreach (Album a in Model.Albums)
+        {
+            <tr>
+                <td>@a.Name</td>
+                <td>@a.Artist.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

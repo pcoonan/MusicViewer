@@ -270,6 +270,7 @@
     <Compile Include="Repos\ArtistRepo.cs" />
     <Compile Include="Repos\SongRepo.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\ArtistViewModel.cs" />
     <Compile Include="ViewModels\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="ViewModels\SongViewModel.cs" />
@@ -346,6 +347,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\default_album.png" />
+    <Content Include="Images\missing_artist.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -417,6 +419,8 @@
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Add.cshtml" />
     <Content Include="Views\Artist\Get.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Album.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Artist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

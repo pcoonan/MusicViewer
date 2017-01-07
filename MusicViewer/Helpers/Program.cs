@@ -18,7 +18,7 @@ namespace MusicViewer.Helpers
         {
             List<string> files = new List<string>();
             Util util = new Util();
-            util.ScanDirectory(args[0], ref files);
+            //util.ScanDirectory(args[0], ref files);
             ProcessFiles(ref files, util);
             //GenerateXML();
             //var mismatch = from tag in tags

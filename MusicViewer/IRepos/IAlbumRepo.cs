@@ -11,5 +11,6 @@ namespace MusicViewer.IRepos
     {
         Album GetAlbum(int id);
         IEnumerable<Album> GetAlbums(string term = null);
+        IEnumerable<Album> GetAlbumsByArtist(int id);
     }
 }

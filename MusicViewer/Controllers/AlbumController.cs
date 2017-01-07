@@ -33,6 +33,7 @@ namespace MusicViewer.Controllers
         public ActionResult Get(int id)
         {
             Album album = AlbumRepo.GetAlbum(id);
+            album.Songs = SongRepo.GetAllSongsByAlbum(id);
             return View(album);
         }
 

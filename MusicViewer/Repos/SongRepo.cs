@@ -36,7 +36,7 @@ namespace MusicViewer.Repos
                      WHERE NOT EXISTS(SELECT 1 FROM Album WHERE Name=@Name AND ArtistId=@ArtistId AND Year=@Year);
                      SELECT Id
                      FROM Album
-                     WHERE Name = @Name AND Id = @ArtistId AND Year = @Year;", 
+                     WHERE Name = @Name AND ArtistId = @ArtistId AND Year = @Year;", 
                     new { Name = song.Album.Name, ArtistId = song.Artist.Id, Year = song.Album.Year }).FirstOrDefault();
                 song.Id = cnn.Query<int>(
                     @"INSERT INTO Song 

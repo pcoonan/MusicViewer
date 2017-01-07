@@ -12,14 +12,13 @@
             <div class="form-group row">
                 @Html.LabelFor(m => m.Artist.Name, new { @class = "form-label col-xs-4" })
                 <div class="col-xs-6">
-                    @Html.DisplayFor(m => m.Artist.Name, new { @class = "form-control" })
+                    @Html.ActionLink(Model.Artist.Name, "Get", "Artist", new { id = Model.Artist.Id }, null)
                 </div>
             </div> 
             <div class="form-group row">
                 @Html.LabelFor(m => m.Album.Name, new { @class = "form-label col-xs-4" })
                 <div class="col-xs-6">
-                    @Html.ActionLink(Model.Album.Name, "Get", "Album", new { id = Model.Album.Id }, new { @class = "form-control"})
-                    @*@Html.DisplayFor(m => m.Album.Name, new { @class = "form-control" })*@
+                    @Html.ActionLink(Model.Album.Name, "Get", "Album", new { id = Model.Album.Id }, null)
                 </div>
             </div> 
             <div class="form-group row">

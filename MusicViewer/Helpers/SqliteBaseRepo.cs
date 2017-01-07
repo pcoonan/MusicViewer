@@ -12,7 +12,7 @@ namespace MusicViewer.Helpers
     {
         public static string DbFile
         {
-            get { return @"C:/data/vsworkspace/MusicXML/MusicXML/Databases/PublicDJDb.sqlite"; }
+            get { return @"C:/data/vsworkspace/MusicViewer/MusicViewer/Databases/PublicDJDb.sqlite"; }
         }
 
         public static SQLiteConnection SimpleDbConnection()

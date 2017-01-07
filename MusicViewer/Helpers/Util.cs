@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MusicViewer.Models;
+using MusicViewer.Repos;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,9 +13,7 @@ namespace MusicViewer.Helpers
 {
     class Util
     {
-        private static List<string> files = new List<string>();
-        private static List<TagLib.File> tags = new List<TagLib.File>();
-        public  void ScanDirectory(string path, ref List<string> outputFiles)
+        public static void ScanDirectory(string path, ref List<string> outputFiles)
         {
             if (!Directory.Exists(path)) return;
             string[] files = Directory.GetFiles(path);
@@ -24,35 +25,31 @@ namespace MusicViewer.Helpers
             }
         }
 
-        //public static void ProcessFiles(ref List<string> filepaths, ref List<TagLib.File> files)
-        //{
-        //    foreach (string file in filepaths)
-        //    {
-        //        ThreadStart start = new ThreadStart(GetMetaData);
-        //        System.Threading.Thread newThread = new System.Threading.Thread(GetMetaData(ref files, file);
-        //    }
-        //}
-
-        public void GetMetaData(string file)
+        public static void ProcessFiles(ref List<string> filepaths)
         {
-            try
+            SongRepo repo = new SongRepo();
+            foreach (string file in filepaths)
             {
-                tags.Add(TagLib.File.Create(file));
-            }
-            catch (PathTooLongException e)
-            {
-                PrintLine(e.ToString() + $"erra {file}");
-            }
-        }
+                TagLib.File tags = null;
+                try
+                {
+                    tags = TagLib.File.Create(file);
+                }
+                catch (Exception e) when (e is PathTooLongException || e is TagLib.CorruptFileException)
+                {
+                    Debug.WriteLine(e.ToString() + $"Error reading tags for: {file}");
+                    continue;
+                }
+                Song s = new Song();
+                s.Title = tags.Tag.Title;
+                s.Artist.Name = tags.Tag.Performers.FirstOrDefault();
+                s.Album.Name = tags.Tag.Album;
+                s.Album.Year = (int)tags.Tag.Year;
+                s.Track = (int)tags.Tag.Track;
+                s.Path = file;
 
-        public List<TagLib.File> GetTags()
-        {
-            return tags;
-        }
-
-        private static void PrintLine(string file)
-        {
-            Console.WriteLine(file);
+                Debug.WriteLine("Song added: " + repo.AddSong(s));
+            }
         }
     }
 }

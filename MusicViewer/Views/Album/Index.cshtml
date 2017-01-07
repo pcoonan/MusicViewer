@@ -19,7 +19,7 @@
         @foreach (Album a in Model.Albums)
         {
             <tr>
-                <td>@a.Name</td>
+                <td>@Html.ActionLink(a.Name != "" ? a.Name : "No Title", "Get", new { id = a.Id })</td>
                 <td>@a.Artist.Name</td>
             </tr>
         }

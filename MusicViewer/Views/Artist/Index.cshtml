@@ -1,7 +1,28 @@
-﻿
+﻿@using MusicViewer.Models
+@model MusicViewer.Models.ArtistViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Artist";
 }
 
-<h2>Index</h2>
+<h2>Artists</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Artist</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Artists != null)
+        {
+            foreach (Artist a in Model.Artists)
+            {
+                <tr>
+                    <td>@Html.ActionLink(a.Name, "Get", new { id = a.Id })</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
 

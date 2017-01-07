@@ -1,0 +1,71 @@
+﻿@using MusicViewer.Models
+@model MusicViewer.Models.Album
+
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Name, new { @class = "col-xs-4 control-label"})
+            <div class="col-xs-8">
+                @Html.DisplayFor(m => m.Name, new { @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Artist.Name, new { @class = "col-xs-4 control-label" })
+            <div class="col-xs-8">
+                @Html.ActionLink(Model.Artist.Name, "Get", "Artist", new { id = Model.Artist.Id }, null)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(m => m.Year, new { @class = "col-xs-4 control-label" })
+            <div class="col-xs-8">
+                @Html.DisplayFor(m => m.Year, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <img src="~/Images/default_album.png" class="img-thumbnail" />
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Songs in @Model.Name
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Track</th>
+                                <th>Title</th>
+                                <th>Artist</th>
+                                <th>Year</th>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            @if (Model.Songs != null)
+                            {
+                                foreach (Song s in Model.Songs)
+                                {
+                                    <tr>
+                                        <td>@s.Track</td>
+                                        <td>@Html.ActionLink(s.Title, "Get", "Song", new { id = s.Id }, null)</td>
+                                        <td>@Html.ActionLink(s.Artist.Name, "Get", "Artist", new { id = s.Id }, null)</td>
+                                        <td>@s.Album.Year</td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

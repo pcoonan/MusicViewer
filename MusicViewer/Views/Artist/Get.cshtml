@@ -1,7 +1,28 @@
-﻿
+﻿@model MusicViewer.Models.Artist
 @{
-    ViewBag.Title = "Get";
+    ViewBag.Title = "Artist";
 }
 
-<h2>Get</h2>
+<h2>Artist Details</h2>
 
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="pull-right">
+                        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-success">
+                            <span class="fa fa-pencil"></span>
+                            Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    @Html.DisplayForModel()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

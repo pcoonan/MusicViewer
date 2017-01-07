@@ -6,21 +6,19 @@ using AutoAutoMapper;
 using System.Collections.Generic;
 using MusicViewer.Helpers;
 
-namespace MusicViewer {
-    public class MvcApplication : HttpApplication
+namespace MusicViewer
 {
-    protected void Application_Start()
+    public class MvcApplication : HttpApplication
     {
-        AreaRegistration.RegisterAllAreas();
-        FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-        RouteConfig.RegisterRoutes(RouteTable.Routes);
-        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             //AutoMapperProfileLoader.Load("MusicViewer",
             //    "MusicXML", "MusicData");
-            List<string> files = new List<string>();
-            Util util = new Util();
-            util.ScanDirectory($"D:/Music", ref files);
-            Program.ProcessFiles(ref files, util);
+           
         }
-}
+    }
 }
